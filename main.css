@@ -1,0 +1,39 @@
+/* theme */
+
+.universal-header {
+  background-color: darkslategrey;
+  color: white;
+}
+
+/* content */
+
+.line {
+    display: flex;
+    white-space: pre;
+  }
+
+.rsoutput {
+    display: flex;
+  }
+  
+.rsoutput > div {
+    background-color: lightgray;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+  }
+
+  input {
+    height: fit-content;
+    width: auto;
+    align-self: center;
+    text-align: center;
+  }
+
+  select {
+    height: fit-content;
+    width: auto;
+    align-self: center;
+    align-content: center;
+  }

@@ -1,7 +1,146 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+    <head>
+        <title>🧮 Conflict's of Nations' Calculator</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <style>
+            body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+        </style>
+    <link rel="stylesheet" href="main.css">
+    </head>    
+    
+<!-- Header -->
+    <header class="universal-header"> 
+        <h1 align="center"><b>CoNCal</b></h1>
+    </header>
+
+<!-- Section-1 -->
+    <div class="w3-card-4 w3-margin w3-white">
+      <div class="w3-container">
+        <h3><b>Resource's Calculator v0.4</b></h3>
+      </div>  
+      <div class="w3-container">
+        <p><strong>Currently being rework into website.</strong> expect some minor error but if it is major you could notice me (playbabeTheBookShelf) at CON official discord</p>
+        
+        <div class="line">
+            <p>City State: </p>
+            <select id="c">
+                <option selected value="1">Homeland</option>
+                <option value="0.5">Annexed</option>
+                <option value="0.25">Occupied</option>
+              </select>
+        </div>
+        
+        <div class="line">
+            <p>Morale (1-100): </p>
+            <input type="Number" id="a" value="70" min="0" max="100">
+        </div>
+        
+        <div class="line">
+            <p>Population (1.0-10.0): </p>
+            <input type="Number" id="b" value="5" min="1" max="10" step="0.1">
+        </div>
+
+        <div class="line">
+            <p>Arms industry lv. (0.0-5.0): </p>
+            <img style="display: inline;" width="45" height="40" src="/assets/arms_industries.png" alt="Arms Industries">
+            <input type="Number" id="d" value="0" min="0" max="5" step="0.1">
+        </div>
+
+        <div class="line">
+            <p>Air base lv. (0.0-5.0): </p>
+            <img style="display: inline;" width="45" height="40" src="/assets/air_base.png" alt="Air Base">
+            <input type="Number" id="e" value="0" min="0" max="5" step="0.1">
+        </div>
+
+        <div class="line">
+            <p>Naval base lv. (1.0-5.0) Set to 1 if doesn't has: </p>
+            <img style="display: inline;" width="45" height="40" src="/assets/naval_base.png" alt="Naval Base">
+            <input type="Number" id="f" value="1" min="1" max="10" step="0.1">
+        </div>
+
+        <p>Custom Multiplier (Ex. 0.75 for 4x game, some city has lower or higher value.): </p>
+        <input type="Number" id="g" value="1">
+
+        <br><br><br><br>
+        <input type="button" onclick="ResCal()" value="Process">
+        
+<!-- Section-1 output table -->
+        <div class="rsoutput">
+            <div>
+                <img style="display: inline;" width="45" height="40" src="/assets/supply.png" alt="Supply">
+                <p id="rsoutput-supply">1701</p>
+            </div>
+            <div>
+                <img style="display: inline;" width="45" height="40" src="/assets/component.png" alt="Component">
+                <p id="rsoutput-component">1458</p>
+            </div>
+            <div>
+                <img style="display: inline;" width="45" height="40" src="/assets/fuel.png" alt="Fuel">
+                <p id="rsoutput-fuel">1701</p>
+            </div>  
+            <div>
+                <img style="display: inline;" width="45" height="40" src="/assets/electronic.png" alt="Electronic">
+                <p id="rsoutput-electronic">1215</p>
+            </div>  
+            <div>
+                <img style="display: inline;" width="45" height="40" src="/assets/rare_material.png" alt="Rare Material">
+                <p id="rsoutput-rare_material">972</p>
+            </div> 
+        </div>
+      </div>
+    </div>
+
+        <script>
+            //Main Calculation
+            function ResCal(){
+                //morale
+                var a = document.getElementById("a").value;
+                //pop                
+                var b = document.getElementById("b").value;
+                //state
+                var c = document.getElementById("c").value;
+                //arm
+                var d = document.getElementById("d").value;
+                //air base
+                var e = document.getElementById("e").value;
+                //naval base
+                var f = document.getElementById("f").value;
+                //custom multiplier
+                var g = document.getElementById("g").value;
+                //turn Morale to Mulitplier
+                var h = ((a/100)*0.8)+0.25
+                //turn Arm & Air base & Naval base to Mulitplier
+                var i = 1+(((d*10)+(e*5)+((f-1)*5))*0.01)
+                //turn Population to Multiplier
+                if (b >= 5){
+                    var j = 1+((b-5)*0.05) 
+                } else {
+                    var j = 1-((5-b)*0.2)
+                }
+                //sum of all multiplier
+                var k = j*h*i*g*c
+                //output display
+                let paragraph  = document.getElementById("rsoutput-supply");
+                paragraph.innerText = Math.round(k*2100);
+                
+                paragraph  = document.getElementById("rsoutput-component");
+                paragraph.innerText = Math.round(k*1800);
+
+                paragraph = document.getElementById("rsoutput-fuel");
+                paragraph.innerText = Math.round(k*2100);
+
+                paragraph = document.getElementById("rsoutput-electronic");
+                paragraph.innerText = Math.round(k*1500);
+
+                paragraph = document.getElementById("rsoutput-rare_material");
+                paragraph.innerText = Math.round(k*1200);
+
+            }
+        </script>
+
+    </body>
 </html>
