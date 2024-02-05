@@ -1,2 +1,2 @@
 # playbabe.net
-# This is personally repository for site hosting in github.
+This is personally repository for site hosting in github.
