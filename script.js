@@ -1,3 +1,20 @@
+// Attach event listeners to inputs For calculating city resources
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("a").addEventListener("input", ResCalCity);
+    document.getElementById("b").addEventListener("input", ResCalCity);
+    document.getElementById("c").addEventListener("input", ResCalCity);
+    document.getElementById("d").addEventListener("input", ResCalCity);
+    document.getElementById("e").addEventListener("input", ResCalCity);
+    document.getElementById("f").addEventListener("input", ResCalCity);
+    document.getElementById("g").addEventListener("input", ResCalCity);
+    document.getElementById("n").addEventListener("input", ResCalCity);
+    //for province cal
+    document.getElementById("o").addEventListener("input", ResCalProvince);
+    document.getElementById("p").addEventListener("input", ResCalProvince);
+    document.getElementById("q").addEventListener("input", ResCalProvince);
+});
+
+// Function For calculating city resources
 function ResCalCity(){
     //morale
     var a = parseFloat(document.getElementById("a").value);
@@ -47,12 +64,43 @@ function ResCalCity(){
     //output display for money & do math for money
     document.getElementById("rsoutput-money").innerText = Math.round(k*1500)+m;
 }
-// Attach event listeners to inputs a, b, c, d, e, and f
-document.getElementById("a").addEventListener("input", ResCalCity);
-document.getElementById("b").addEventListener("input", ResCalCity);
-document.getElementById("c").addEventListener("input", ResCalCity);
-document.getElementById("d").addEventListener("input", ResCalCity);
-document.getElementById("e").addEventListener("input", ResCalCity);
-document.getElementById("f").addEventListener("input", ResCalCity);
-document.getElementById("g").addEventListener("input", ResCalCity);
-document.getElementById("n").addEventListener("input", ResCalCity);
+
+// Function For calculating province resources
+function ResCalProvince(){
+    //morale
+    var o = parseFloat(document.getElementById("o").value);
+    //custom multiplier
+    var p = parseFloat(document.getElementById("p").value);
+    var q = parseFloat(document.getElementById("q").value);
+    //turn Morale to Mulitplier
+    var r = ((o/100)*0.8)+0.25
+    //sum of all multiplier
+    var s = p*q*r
+    //output display for resources
+    ////No local industry
+    document.getElementById("rsoutput-supply-p-0").innerText = Math.round(s * 210);
+    document.getElementById("rsoutput-component-p-0").innerText = Math.round(s * 180);
+    document.getElementById("rsoutput-fuel-p-0").innerText = Math.round(s * 210);
+    document.getElementById("rsoutput-electronic-p-0").innerText = Math.round(s * 150);
+    document.getElementById("rsoutput-rare_material-p-0").innerText = Math.round(s * 120);
+    document.getElementById("rsoutput-money-p").innerText = Math.round(s * 112);
+    //// local industry Lv1
+    document.getElementById("rsoutput-supply-p-1").innerText = Math.round(s * 210 * 2);
+    document.getElementById("rsoutput-component-p-1").innerText = Math.round(s * 180 * 2);
+    document.getElementById("rsoutput-fuel-p-1").innerText = Math.round(s * 210 * 2);
+    document.getElementById("rsoutput-electronic-p-1").innerText = Math.round(s * 150 * 2);
+    document.getElementById("rsoutput-rare_material-p-1").innerText = Math.round(s * 120 * 2);
+    //// local industry Lv2
+    document.getElementById("rsoutput-supply-p-2").innerText = Math.round(s * 210 * 2.5);
+    document.getElementById("rsoutput-component-p-2").innerText = Math.round(s * 180 * 2.5);
+    document.getElementById("rsoutput-fuel-p-2").innerText = Math.round(s * 210 * 2.5);
+    document.getElementById("rsoutput-electronic-p-2").innerText = Math.round(s * 150 * 2.5);
+    document.getElementById("rsoutput-rare_material-p-2").innerText = Math.round(s * 120 * 2.5);
+    //// local industry Lv3
+    document.getElementById("rsoutput-supply-p-3").innerText = Math.round(s * 210 * 3);
+    document.getElementById("rsoutput-component-p-3").innerText = Math.round(s * 180 * 3);
+    document.getElementById("rsoutput-fuel-p-3").innerText = Math.round(s * 210 * 3);
+    document.getElementById("rsoutput-electronic-p-3").innerText = Math.round(s * 150 * 3);
+    document.getElementById("rsoutput-rare_material-p-3").innerText = Math.round(s * 120 * 3);
+    //This section is for money production calculation
+}

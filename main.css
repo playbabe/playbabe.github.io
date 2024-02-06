@@ -5,6 +5,42 @@
   color: white;
 }
 
+/* table */
+
+.rsoutput_table {
+  width: fit-content;
+  margin: 5px;
+  background-color: lightgray;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 0px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.rsoutput_table_row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.rsoutput_table_cell {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border-right: 1px solid #000000;
+}
+
+.rsoutput_table_cell:last-child {
+  border-right: none;
+}
+
+
 /* content */
 
 .line {
@@ -19,20 +55,21 @@
   
 .rsoutput > div {
     background-color: lightgray;
+    border-radius: 5px;
     width: 100px;
     margin: 5px;
     text-align: center;
     line-height: 0px;
   }
 
-  input {
+input {
     height: fit-content;
     width: auto;
     align-self: center;
     text-align: center;
   }
 
-  select {
+select {
     height: fit-content;
     width: auto;
     align-self: center;
