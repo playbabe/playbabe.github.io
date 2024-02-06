@@ -10,6 +10,7 @@
 .line {
     display: flex;
     white-space: pre;
+    flex-wrap: wrap;
   }
 
 .rsoutput {
@@ -19,9 +20,9 @@
 .rsoutput > div {
     background-color: lightgray;
     width: 100px;
-    margin: 10px;
+    margin: 5px;
     text-align: center;
-    line-height: 75px;
+    line-height: 0px;
   }
 
   input {
