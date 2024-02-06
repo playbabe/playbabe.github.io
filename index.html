@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <head>
-
 <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJK7X0M3KH"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-EJK7X0M3KH');
-        </script>
-        
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJK7X0M3KH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EJK7X0M3KH');
+    </script>
+<!-- Html Head -->
+    <head>
         <title>🧮 Conflict's of Nations' Calculator</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +18,9 @@
         <style>
             body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </style>
-    <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="main.css">
+        <!-- Link to JS script -->
+        <script type="text/javascript" src="rescity.js"></script>
     </head>    
     
 <!-- Header -->
@@ -73,13 +73,24 @@
             <input type="Number" id="f" value="1" min="1" max="10" step="0.1">
         </div>
 
-        <p>Custom Multiplier (Ex. 0.75 for 4x game, some city has lower or higher value.): </p>
-        <input type="Number" id="g" value="1">
+        <div class="line">
+            <p>Custom Multiplier (two input for combimation of custom multipier): </p>
+            <input type="Number" id="g" value="1" min="0" max="10">
+            <input type="Number" id="n" value="1" min="0" max="10">
+        </div>
 
-        <br><br><br><br>
-        <input type="button" onclick="ResCal()" value="Process">
+        <div style="line-height: 0; white-space: pre;">
+            <p>    Known example:</p>
+            <p>        0.75 (x3/4) for 4x speed game.</p>
+            <p>        0.6 (x3/5) for 10x speed game.</p>
+            <p>        0.75 (x3/4) for some city.</p>
+            <p>        1.33 (x4/3) for some city.</p>
+            <p>        0.67 (x2/3) for some city.</p>
+        </div>
+        <br>
         
-<!-- Section-1 output table -->
+        <!-- Section-1 output table -->
+        <h5>Resource's Production (unit/day)</h5>
         <div class="rsoutput">
             <div>
                 <img style="display: inline;" width="45" height="40" src="/assets/supply.png" alt="Supply">
@@ -101,57 +112,16 @@
                 <img style="display: inline;" width="45" height="40" src="/assets/rare_material.png" alt="Rare Material">
                 <p id="rsoutput-rare_material">972</p>
             </div> 
+            <div>
+                <img style="display: inline;" width="45" height="40" src="/assets/money.png" alt="Money">
+                <p id="rsoutput-money">1215</p>
+            </div> 
         </div>
       </div>
     </div>
 
-        <script>
-            //Main Calculation
-            function ResCal(){
-                //morale
-                var a = document.getElementById("a").value;
-                //pop                
-                var b = document.getElementById("b").value;
-                //state
-                var c = document.getElementById("c").value;
-                //arm
-                var d = document.getElementById("d").value;
-                //air base
-                var e = document.getElementById("e").value;
-                //naval base
-                var f = document.getElementById("f").value;
-                //custom multiplier
-                var g = document.getElementById("g").value;
-                //turn Morale to Mulitplier
-                var h = ((a/100)*0.8)+0.25
-                //turn Arm & Air base & Naval base to Mulitplier
-                var i = 1+(((d*10)+(e*5)+((f-1)*5))*0.01)
-                //turn Population to Multiplier
-                if (b >= 5){
-                    var j = 1+((b-5)*0.05) 
-                } else {
-                    var j = 1-((5-b)*0.2)
-                }
-                //sum of all multiplier
-                var k = j*h*i*g*c
-                //output display
-                let paragraph  = document.getElementById("rsoutput-supply");
-                paragraph.innerText = Math.round(k*2100);
-                
-                paragraph  = document.getElementById("rsoutput-component");
-                paragraph.innerText = Math.round(k*1800);
-
-                paragraph = document.getElementById("rsoutput-fuel");
-                paragraph.innerText = Math.round(k*2100);
-
-                paragraph = document.getElementById("rsoutput-electronic");
-                paragraph.innerText = Math.round(k*1500);
-
-                paragraph = document.getElementById("rsoutput-rare_material");
-                paragraph.innerText = Math.round(k*1200);
-
-            }
-        </script>
+    <!-- src=point to script file -->
+    <script src="script.js"></script>
 
     </body>
 </html>
