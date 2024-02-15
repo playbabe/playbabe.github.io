@@ -8,9 +8,10 @@
         gtag('js', new Date());
         gtag('config', 'G-EJK7X0M3KH');
     </script>
-<!-- Html Head -->
+	<!-- Html Head -->
     <head>
         <title>🧮 Conflict's of Nations' Calculator</title>
+		<meta name="description" content="Resources and Production calculation/generation for Conflict of Nations game">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
@@ -35,7 +36,7 @@
       <div class="w3-container">
         <h3><b>Resource's Calculator (City) v0.4</b></h3>
         <p><strong>Currently being rework into website.</strong> expect some minor error but if it is major you could notice me (playbabeTheBookShelf) at CON official discord</p>
-            
+
     </div>  
       <div class="w3-container">   
         <div class="line">
@@ -79,16 +80,21 @@
             <p>Custom Multiplier (two input for combimation): </p>
             <input type="Number" id="g" value="1" min="0" max="10">
             <input type="Number" id="n" value="1" min="0" max="10">
-        </div>
-
-        <div>
-            <p>Known example:
+            <div class="tooltip">[info]
+                <span class="tooltiptext">
+                <p>Known example:
                 <br>0.75 (x3/4) for 4x speed game.
                 <br>0.75 (x3/4) for 4x speed game.
                 <br>0.6 (x3/5) for 10x speed game.
                 <br>0.75 (x3/4) for some city.
                 <br>1.33 (x4/3) for some city.
-                <br>0.67 (x2/3) for some city.
+                <br>0.67 (x2/3) for some city.</p>                    
+                </span>
+            </div>
+        </div>
+
+        <div>
+
             </p>
         </div>
         
@@ -115,23 +121,25 @@
               <p>Morale (0-100): </p>
               <input type="Number" id="o" value="70" min="0" max="100">
           </div>
-  
+   
           <div class="line">
-              <p>Custom Multiplier (two input for combimation): </p>
-              <input type="Number" id="p" value="1" min="0" max="10">
-              <input type="Number" id="q" value="1" min="0" max="10">
-          </div>
-  
-          <div>
-            <p>Known example:
+            <p>Custom Multiplier (two input for combimation): </p>
+            <input type="Number" id="p" value="1" min="0" max="10">
+            <input type="Number" id="q" value="1" min="0" max="10">
+            <div class="tooltip">[info]
+                <span class="tooltiptext">
+                <p>Known example:
                 <br>0.75 (x3/4) for 4x speed game.
                 <br>0.75 (x3/4) for 4x speed game.
                 <br>0.6 (x3/5) for 10x speed game.
                 <br>0.75 (x3/4) for some province.
                 <br>1.33 (x4/3) for some province.
                 <br>0.67 (x2/3) for some province.
-                <br>0.5 (x1/2) for some province.
-            </p>
+                <br>0.5 (x1/2) for some province.</p>                    
+                </span>
+            </div>
+          </div>
+
         </div>
           
         <!-- Section-2 output table -->
