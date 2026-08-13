@@ -102,3 +102,26 @@ select {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.scenario-select {
+    width: 100%;
+    max-width: 280px;
+    padding: 8px 12px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background-color: #1f1f1f;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.scenario-select:focus {
+    outline: none;
+    border-color: #7aa2ff;
+    box-shadow: 0 0 0 2px rgba(122, 162, 255, 0.25);
+}
+
+.scenario-select option {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
