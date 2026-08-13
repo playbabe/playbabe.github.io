@@ -1,0 +1,29 @@
+{
+  "defaultScenario": "default",
+  "scenarios": {
+    "default": {
+      "name": "Default 1x Scenario",
+      "resources": {
+        "supply": 2100,
+        "component": 1800,
+        "fuel": 2100,
+        "electronic": 1500,
+        "rare_material": 1200,
+        "man_power": 900,
+        "money": 1500
+      }
+    },
+    "highProduction": {
+      "name": "Default 4x Scenario",
+      "resources": {
+        "supply": 2500,
+        "component": 2200,
+        "fuel": 2500,
+        "electronic": 1800,
+        "rare_material": 1500,
+        "man_power": 1100,
+        "money": 1800
+      }
+    }
+  }
+}
