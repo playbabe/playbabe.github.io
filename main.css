@@ -104,24 +104,23 @@ select {
 }
 
 .scenario-select {
-    width: 100%;
-    max-width: 280px;
-    padding: 8px 12px;
-    border: 1px solid #555;
+    min-width: 220px;
+    padding: 6px 10px;
+    border: 1px solid #999;
     border-radius: 6px;
-    background-color: #1f1f1f;
-    color: #ffffff;
-    font-size: 14px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
     cursor: pointer;
 }
 
 .scenario-select:focus {
     outline: none;
-    border-color: #7aa2ff;
-    box-shadow: 0 0 0 2px rgba(122, 162, 255, 0.25);
+    border-color: #4b7bec;
+    box-shadow: 0 0 0 2px rgba(75, 123, 236, 0.25);
 }
 
 .scenario-select option {
-    background-color: #1f1f1f;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
 }
