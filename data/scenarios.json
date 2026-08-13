@@ -4,25 +4,61 @@
     "default": {
       "name": "Default 1x Scenario",
       "resources": {
-        "supply": 2100,
-        "component": 1800,
-        "fuel": 2100,
-        "electronic": 1500,
-        "rare_material": 1200,
-        "man_power": 900,
-        "money": 1500
+        "supply": 0.7,
+        "component": 0.6,
+        "fuel": 0.7,
+        "electronic": 0.5,
+        "rare_material": 0.4,
+        "man_power": 1,
+        "money": 0.5
       }
     },
-    "highProduction": {
+    "default4x": {
       "name": "Default 4x Scenario",
       "resources": {
-        "supply": 2500,
-        "component": 2200,
-        "fuel": 2500,
-        "electronic": 1800,
-        "rare_material": 1500,
-        "man_power": 1100,
-        "money": 1800
+        "supply": 0.53,
+        "component": 0.45,
+        "fuel": 0.53,
+        "electronic": 0.38,
+        "rare_material": 0.3,
+        "man_power": 0.8,
+        "money": 0.38
+      }
+    },
+    "default8x": {
+      "name": "Default 8x Scenario",
+      "resources": {
+        "supply": 0.40,
+        "component": 0.35,
+        "fuel": 0.40,
+        "electronic": 0.25,
+        "rare_material": 0.25,
+        "man_power": 0.5,
+        "money": 0.25
+      }
+    },
+    "underworld1x": {
+      "name": "Underworld 1x Scenario",
+      "resources": {
+        "supply": 0.65,
+        "component": 0.55,
+        "fuel": 0.65,
+        "electronic": 0.45,
+        "rare_material": 0.35,
+        "man_power": 0.95,
+        "money": 0.45
+      }
+    },
+    "underworld4x": {
+      "name": "Underworld 4x Scenario",
+      "resources": {
+        "supply": 0.48,
+        "component": 0.40,
+        "fuel": 0.48,
+        "electronic": 0.33,
+        "rare_material": 0.25,
+        "man_power": 0.75,
+        "money": 0.33
       }
     }
   }
