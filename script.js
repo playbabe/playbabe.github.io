@@ -134,7 +134,7 @@ function ResCalCity() {
 
     Object.keys(selectedScenario.resources).forEach(function(resourceKey) {
         var baseValue = selectedScenario.resources[resourceKey];
-        outputResource("rsoutput-" + resourceKey, k * baseValue);
+        outputResource("rsoutput-" + resourceKey, k * baseValue * 3000);
     });
 
     var l = Math.floor(d);
@@ -149,7 +149,7 @@ function ResCalCity() {
 
     var m = valueMap[l] || 0;
 
-    outputResource("rsoutput-money", (k * selectedScenario.resources.money) + m);
+    outputResource("rsoutput-money", (k * selectedScenario.resources.money * 3000) + m);
 }
 
 function ResCalProvince() {
@@ -184,10 +184,10 @@ function ResCalProvince() {
             var baseValue = selectedScenario.resources[resourceKey];
             outputResource(
                 "rsoutput-" + resourceKey + "-p-" + industryLevel,
-                s * baseValue * industryMultiplier
+                s * baseValue * industryMultiplier * 3000
             );
         });
     });
 
-    outputResource("rsoutput-money-p", s * selectedScenario.resources.money);
+    outputResource("rsoutput-money-p", s * selectedScenario.resources.money * 3000);
 }
