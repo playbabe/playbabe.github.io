@@ -60,6 +60,30 @@
         "man_power": 0.75,
         "money": 0.33
       }
+    },
+    "ava1x": {
+      "name": "AvA 1x Scenario",
+      "resources": {
+        "supply": 0.975,
+        "component": 0.8,
+        "fuel": 0.85,
+        "electronic": 0.7,
+        "rare_material": 0.575,
+        "man_power": 1.25,
+        "money": 0.75
+      }
+    },
+    "ava4x": {
+      "name": "AvA 4x Scenario",
+      "resources": {
+        "supply": 0.53,
+        "component": 0.45,
+        "fuel": 0.53,
+        "electronic": 0.38,
+        "rare_material": 0.30,
+        "man_power": 0.80,
+        "money": 0.38
+      }
     }
   }
 }
