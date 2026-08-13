@@ -124,7 +124,6 @@ function ResCalCity() {
     var e = parseFloat(document.getElementById("e").value) || 0;
     var f = parseFloat(document.getElementById("f").value) || 0;
     var g = parseFloat(document.getElementById("g").value) || 0;
-    var n = parseFloat(document.getElementById("n").value) || 0;
 
     var h = ((a / 100) * 0.8) + 0.25;
     var i = 1 + (((d * 10) + (e * 5) + ((f - 1) * 5)) * 0.01);
@@ -161,7 +160,6 @@ function ResCalProvince() {
 
     var o = parseFloat(document.getElementById("o").value) || 0;
     var p = parseFloat(document.getElementById("p").value) || 0;
-    var q = parseFloat(document.getElementById("q").value) || 0;
 
     var r = ((o / 100) * 0.8) + 0.25;
     var s = p * q * r;
