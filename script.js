@@ -160,7 +160,7 @@ function ResCalProvince() {
     var p = parseFloat(document.getElementById("p").value) || 0;
 
     var r = ((o / 100) * 0.8) + 0.25;
-    var s = p * q * r;
+    var s = p * r;
 
     var industryMultipliers = {
         0: 0.1,
