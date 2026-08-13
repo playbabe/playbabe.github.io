@@ -127,7 +127,7 @@ function ResCalCity() {
     var i = 1 + (((d * 10) + (e * 5) + ((f - 1) * 5)) * 0.01);
     var j = getPopulationMultiplier(b);
 
-    var k = j * h * i * g * c * n;
+    var k = j * h * i * g * c;
 
     Object.keys(selectedScenario.resources).forEach(function(resourceKey) {
         var baseValue = selectedScenario.resources[resourceKey];
