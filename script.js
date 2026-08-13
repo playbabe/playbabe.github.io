@@ -1,5 +1,9 @@
-// Attach event listeners to inputs For calculating city resources
+var scenarioData = null;
+var currentScenario = null;
+
 document.addEventListener("DOMContentLoaded", function() {
+    loadScenarioData();
+
     document.getElementById("a").addEventListener("input", ResCalCity);
     document.getElementById("b").addEventListener("input", ResCalCity);
     document.getElementById("c").addEventListener("input", ResCalCity);
@@ -8,49 +12,131 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("f").addEventListener("input", ResCalCity);
     document.getElementById("g").addEventListener("input", ResCalCity);
     document.getElementById("n").addEventListener("input", ResCalCity);
-    //for province cal
+
     document.getElementById("o").addEventListener("input", ResCalProvince);
     document.getElementById("p").addEventListener("input", ResCalProvince);
     document.getElementById("q").addEventListener("input", ResCalProvince);
+
+    document.getElementById("scenario-select").addEventListener("change", function(event) {
+        currentScenario = event.target.value;
+        ResCalCity();
+        ResCalProvince();
+    });
 });
 
-// Function For calculating city resources
-function ResCalCity(){
-    //morale
-    var a = parseFloat(document.getElementById("a").value);
-    //pop                
-    var b = parseFloat(document.getElementById("b").value);
-    //state
-    var c = parseFloat(document.getElementById("c").value);
-    //arm
-    var d = parseFloat(document.getElementById("d").value);
-    //air base
-    var e = parseFloat(document.getElementById("e").value);
-    //naval base
-    var f = parseFloat(document.getElementById("f").value);
-    //custom multiplier
-    var g = parseFloat(document.getElementById("g").value);
-    var n = parseFloat(document.getElementById("n").value);
-    //turn Morale to Mulitplier
-    var h = ((a/100)*0.8)+0.25
-    //turn Arm & Air base & Naval base to Mulitplier
-    var i = 1+(((d*10)+(e*5)+((f-1)*5))*0.01)
-    //turn Population to Multiplier
-    if (b >= 5){
-        var j = 1+((b-5)*0.05) 
-    } else {
-        var j = 1-((5-b)*0.2)
+function loadScenarioData() {
+    fetch("data/scenarios.json")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            scenarioData = data;
+            currentScenario = data.defaultScenario;
+            populateScenarioSelect();
+            ResCalCity();
+            ResCalProvince();
+        })
+        .catch(function(error) {
+            console.error("Failed to load scenario data:", error);
+        });
+}
+
+function populateScenarioSelect() {
+    var scenarioSelect = document.getElementById("scenario-select");
+    scenarioSelect.innerHTML = "";
+
+    Object.keys(scenarioData.scenarios).forEach(function(scenarioKey) {
+        var option = document.createElement("option");
+        option.value = scenarioKey;
+        option.textContent = scenarioData.scenarios[scenarioKey].name;
+
+        if (scenarioKey === currentScenario) {
+            option.selected = true;
+        }
+
+        scenarioSelect.appendChild(option);
+    });
+}
+
+function getSelectedScenario() {
+    if (!scenarioData || !currentScenario) {
+        return null;
     }
-    //sum of all multiplier
-    var k = j*h*i*g*c*n
-    //output display for resources
-    document.getElementById("rsoutput-supply").innerText = Math.round(k * 2100);
-    document.getElementById("rsoutput-component").innerText = Math.round(k * 1800);
-    document.getElementById("rsoutput-fuel").innerText = Math.round(k * 2100);
-    document.getElementById("rsoutput-electronic").innerText = Math.round(k * 1500);
-    document.getElementById("rsoutput-rare_material").innerText = Math.round(k * 1200);
-    //This section is for money production calculation
-    //turn arm to flat money rate
+
+    return scenarioData.scenarios[currentScenario];
+}
+
+function getPopulationMultiplier(population) {
+    var populationFactorMap = {
+        1: 0.2,
+        2: 0.4,
+        3: 0.6,
+        4: 0.8,
+        5: 1.0,
+        6: 1.05,
+        7: 1.10,
+        8: 1.15,
+        9: 1.25,
+        10: 1.35
+    };
+
+    var lowerPop = Math.floor(population);
+    var upperPop = Math.ceil(population);
+
+    if (population <= 1) {
+        return populationFactorMap[1];
+    }
+
+    if (population >= 10) {
+        return populationFactorMap[10];
+    }
+
+    if (lowerPop === upperPop) {
+        return populationFactorMap[lowerPop];
+    }
+
+    var lowerFactor = populationFactorMap[lowerPop];
+    var upperFactor = populationFactorMap[upperPop];
+    var progress = population - lowerPop;
+
+    return lowerFactor + ((upperFactor - lowerFactor) * progress);
+}
+
+function outputResource(elementId, value) {
+    var outputElement = document.getElementById(elementId);
+
+    if (outputElement) {
+        outputElement.innerText = Math.round(value);
+    }
+}
+
+function ResCalCity() {
+    var selectedScenario = getSelectedScenario();
+
+    if (!selectedScenario) {
+        return;
+    }
+
+    var a = parseFloat(document.getElementById("a").value) || 0;
+    var b = parseFloat(document.getElementById("b").value) || 0;
+    var c = parseFloat(document.getElementById("c").value) || 0;
+    var d = parseFloat(document.getElementById("d").value) || 0;
+    var e = parseFloat(document.getElementById("e").value) || 0;
+    var f = parseFloat(document.getElementById("f").value) || 0;
+    var g = parseFloat(document.getElementById("g").value) || 0;
+    var n = parseFloat(document.getElementById("n").value) || 0;
+
+    var h = ((a / 100) * 0.8) + 0.25;
+    var i = 1 + (((d * 10) + (e * 5) + ((f - 1) * 5)) * 0.01);
+    var j = getPopulationMultiplier(b);
+
+    var k = j * h * i * g * c * n;
+
+    Object.keys(selectedScenario.resources).forEach(function(resourceKey) {
+        var baseValue = selectedScenario.resources[resourceKey];
+        outputResource("rsoutput-" + resourceKey, k * baseValue);
+    });
+
     var l = Math.floor(d);
     var valueMap = {
         5: 200,
@@ -60,47 +146,48 @@ function ResCalCity(){
         1: 100,
         0: 0
     };
-    var m = valueMap[l];
-    //output display for money & do math for money
-    document.getElementById("rsoutput-money").innerText = Math.round(k*1500)+m;
+
+    var m = valueMap[l] || 0;
+
+    outputResource("rsoutput-money", (k * selectedScenario.resources.money) + m);
 }
 
-// Function For calculating province resources
-function ResCalProvince(){
-    //morale
-    var o = parseFloat(document.getElementById("o").value);
-    //custom multiplier
-    var p = parseFloat(document.getElementById("p").value);
-    var q = parseFloat(document.getElementById("q").value);
-    //turn Morale to Mulitplier
-    var r = ((o/100)*0.8)+0.25
-    //sum of all multiplier
-    var s = p*q*r
-    //output display for resources
-    ////No local industry
-    document.getElementById("rsoutput-supply-p-0").innerText = Math.round(s * 210);
-    document.getElementById("rsoutput-component-p-0").innerText = Math.round(s * 180);
-    document.getElementById("rsoutput-fuel-p-0").innerText = Math.round(s * 210);
-    document.getElementById("rsoutput-electronic-p-0").innerText = Math.round(s * 150);
-    document.getElementById("rsoutput-rare_material-p-0").innerText = Math.round(s * 120);
-    document.getElementById("rsoutput-money-p").innerText = Math.round(s * 112);
-    //// local industry Lv1
-    document.getElementById("rsoutput-supply-p-1").innerText = Math.round(s * 210 * 2);
-    document.getElementById("rsoutput-component-p-1").innerText = Math.round(s * 180 * 2);
-    document.getElementById("rsoutput-fuel-p-1").innerText = Math.round(s * 210 * 2);
-    document.getElementById("rsoutput-electronic-p-1").innerText = Math.round(s * 150 * 2);
-    document.getElementById("rsoutput-rare_material-p-1").innerText = Math.round(s * 120 * 2);
-    //// local industry Lv2
-    document.getElementById("rsoutput-supply-p-2").innerText = Math.round(s * 210 * 2.5);
-    document.getElementById("rsoutput-component-p-2").innerText = Math.round(s * 180 * 2.5);
-    document.getElementById("rsoutput-fuel-p-2").innerText = Math.round(s * 210 * 2.5);
-    document.getElementById("rsoutput-electronic-p-2").innerText = Math.round(s * 150 * 2.5);
-    document.getElementById("rsoutput-rare_material-p-2").innerText = Math.round(s * 120 * 2.5);
-    //// local industry Lv3
-    document.getElementById("rsoutput-supply-p-3").innerText = Math.round(s * 210 * 3);
-    document.getElementById("rsoutput-component-p-3").innerText = Math.round(s * 180 * 3);
-    document.getElementById("rsoutput-fuel-p-3").innerText = Math.round(s * 210 * 3);
-    document.getElementById("rsoutput-electronic-p-3").innerText = Math.round(s * 150 * 3);
-    document.getElementById("rsoutput-rare_material-p-3").innerText = Math.round(s * 120 * 3);
-    //This section is for money production calculation
+function ResCalProvince() {
+    var selectedScenario = getSelectedScenario();
+
+    if (!selectedScenario) {
+        return;
+    }
+
+    var o = parseFloat(document.getElementById("o").value) || 0;
+    var p = parseFloat(document.getElementById("p").value) || 0;
+    var q = parseFloat(document.getElementById("q").value) || 0;
+
+    var r = ((o / 100) * 0.8) + 0.25;
+    var s = p * q * r;
+
+    var industryMultipliers = {
+        0: 1,
+        1: 2,
+        2: 2.5,
+        3: 3
+    };
+
+    Object.keys(industryMultipliers).forEach(function(industryLevel) {
+        var industryMultiplier = industryMultipliers[industryLevel];
+
+        Object.keys(selectedScenario.resources).forEach(function(resourceKey) {
+            if (resourceKey === "money") {
+                return;
+            }
+
+            var baseValue = selectedScenario.resources[resourceKey];
+            outputResource(
+                "rsoutput-" + resourceKey + "-p-" + industryLevel,
+                s * baseValue * industryMultiplier
+            );
+        });
+    });
+
+    outputResource("rsoutput-money-p", s * selectedScenario.resources.money);
 }
