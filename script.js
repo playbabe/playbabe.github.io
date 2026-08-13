@@ -11,11 +11,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("e").addEventListener("input", ResCalCity);
     document.getElementById("f").addEventListener("input", ResCalCity);
     document.getElementById("g").addEventListener("input", ResCalCity);
-    document.getElementById("n").addEventListener("input", ResCalCity);
 
     document.getElementById("o").addEventListener("input", ResCalProvince);
     document.getElementById("p").addEventListener("input", ResCalProvince);
-    document.getElementById("q").addEventListener("input", ResCalProvince);
 
     document.getElementById("scenario-select").addEventListener("change", function(event) {
         currentScenario = event.target.value;
