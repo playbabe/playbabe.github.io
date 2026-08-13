@@ -167,10 +167,10 @@ function ResCalProvince() {
     var s = p * q * r;
 
     var industryMultipliers = {
-        0: 1,
-        1: 2,
-        2: 2.5,
-        3: 3
+        0: 0.1,
+        1: 0.15,
+        2: 0.2,
+        3: 0.3
     };
 
     Object.keys(industryMultipliers).forEach(function(industryLevel) {
