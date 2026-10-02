@@ -1,205 +1,212 @@
 <!DOCTYPE html>
-<html>
-<!-- Google tag (gtag.js) -->
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calculate city and province resource production in Conflict of Nations. Compare scenarios, morale, population, and building levels.">
+    <title>CoNCal &mdash; Conflict of Nations Calculator</title>
+    <script src="theme.js"></script>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <script defer src="data/scenarios.js"></script>
+    <script defer src="script.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJK7X0M3KH"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-EJK7X0M3KH');
+        gtag("js", new Date());
+        gtag("config", "G-EJK7X0M3KH");
     </script>
-	<!-- Html Head -->
-    <head>
-        <title>Conflict's of Nations' Calculator</title>
-		<meta name="description" content="Resources and Production calculation/generation for Conflict of Nations game">
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <style>
-            body,h1,h2,h3,h4,h5 {font-family: "Calibri", sans-serif}
-        </style>
-        <link rel="stylesheet" href="main.css">
-        <!-- Link to JS script -->
-        <script type="text/javascript" src="rescity.js"></script>
-    </head>    
-    
-    <!-- src=point to script file -->
-    <script src="script.js"></script>
-
-    <!-- Header -->
-    <header class="universal-header"> 
-        <h1 align="center"><b>CoNCal</b></h1>
+</head>
+<body>
+    <a class="skip-link" href="#resource-calculators">Skip to calculators</a>
+    <header class="universal-header">
+        <div class="header-inner page-width">
+            <a class="brand" href="index.html" aria-label="CoNCal home">
+                <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M8 7h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2"/></svg></span>
+                <span>CoNCal<span class="brand-subtitle">Conflict of Nations tools</span></span>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+                <span>Dark mode</span>
+            </button>
+        </div>
     </header>
 
-    <!-- Section-1 -->
-    <div class="w3-card-4 w3-margin w3-white" style="border-radius:20px;">
-      <div class="w3-container">
-        <h3><b>Resource's Calculator (City) v0.5</b></h3>
-        <p><strong>Updated 08/2026: Now more accurate with Scenario selector! and catch up to Population & Local industry changes, </strong> Expect some minor errors, you could notice me (playbabeTheBookShelf) at Supremacy official discord</p>
-
-
-
-    </div>  
-      <div class="w3-container">
-
-          <label for="scenario-select">Scenario</label>
-          <select id="scenario-select" class="scenario-select"></select>
-
-        <div class="line">
-            <p>City State: </p>
-            <select id="c">
-                <option selected value="1">Homeland</option>
-                <option value="0.5">Annexed</option>
-                <option value="0.25">Occupied</option>
-              </select>
+    <!-- Add links to future calculators here. -->
+    <nav class="calculator-nav" aria-label="Calculators">
+        <div class="nav-inner page-width">
+            <a class="calculator-nav-link" href="index.html" aria-current="page">Resource calculator</a>
+            <a class="calculator-nav-link" href="second-calculator.html">Damage distribution</a>
         </div>
-        
-        <div class="line">
-            <p>Morale (0-100): </p>
-            <input type="Number" id="a" value="70" min="0" max="100">
-        </div>
-        
-        <div class="line">
-            <p>Population (1.0-10.0): </p>
-            <input type="Number" id="b" value="5" min="1" max="10" step="0.1">
-        </div>
+    </nav>
 
-        <div class="line">
-            <p>Arms industry lv. (0.0-5.0): </p>
-            <img style="display: inline;" width="45" height="40" src="/assets/arms_industries.png" alt="Arms Industries">
-            <input type="Number" id="d" value="0" min="0" max="5" step="0.1">
-        </div>
-
-        <div class="line">
-            <p>Air base lv. (0.0-5.0): </p>
-            <img style="display: inline;" width="45" height="40" src="/assets/air_base.png" alt="Air Base">
-            <input type="Number" id="e" value="0" min="0" max="5" step="0.1">
-        </div>
-
-        <div class="line">
-            <p>Naval base lv. (1.0-5.0) Set to 1 if doesn't has: </p>
-            <img style="display: inline;" width="45" height="40" src="/assets/naval_base.png" alt="Naval Base">
-            <input type="Number" id="f" value="1" min="1" max="10" step="0.1">
-        </div>
-
-        <div class="line">
-            <p>Custom Multiplier: </p>
-            <input type="Number" id="g" value="1" min="0" max="10">
-            <div class="tooltip">[info]
-                <span class="tooltiptext">
-                <p>Use when calcuoutput not match your city production
-				<br>Known example:
-                <br>0.75 (x3/4) for some playable city.
-                <br>1.33 (x4/3) for some playable city.
-                <br>0.67 (x2/3) for some unplayable city.</p>           
-				<br>0.50 (x1/2) for some unplayable city.</p>     
-                </span>
+    <main id="resource-calculators" class="page-width">
+        <section class="page-intro" aria-labelledby="page-title">
+            <div>
+                <h1 id="page-title">Supremacy WW3: Resources Calculator</h1>
+                <p class="intro-description">Estimate daily production for your cities and provinces. Adjust the numbers and see your results instantly.</p>
             </div>
-        </div>
+            <span class="version-badge">v0.5 <span aria-hidden="true">&middot;</span> Updated Aug 2026</span>
+        </section>
 
-        <div>
-
-            </p>
-        </div>
-        
-        <!-- Section-1 output table -->
-        <h5 style="line-height: 10px;">Resource's Production (unit/day)</h5>
-        <div class="rsoutput" style="font-weight: bold;">
-            <div><img style="display: inline;" width="45" height="40" src="/assets/supply.png" alt="Supply"><p id="rsoutput-supply">1701</p></div>
-            <div><img style="display: inline;" width="45" height="40" src="/assets/component.png" alt="Component"><p id="rsoutput-component">1458</p></div>
-            <div><img style="display: inline;" width="45" height="40" src="/assets/fuel.png" alt="Fuel"><p id="rsoutput-fuel">1701</p></div>  
-            <div><img style="display: inline;" width="45" height="40" src="/assets/electronic.png" alt="Electronic"><p id="rsoutput-electronic">1215</p></div>  
-            <div><img style="display: inline;" width="45" height="40" src="/assets/rare_material.png" alt="Rare Material"><p id="rsoutput-rare_material">972</p></div> 
-            <div><img style="display: inline;" width="45" height="40" src="/assets/money.png" alt="Money"><p id="rsoutput-money">1215</p></div> 
-        </div>
-      </div>
-    </div>
-
-    <!-- Section-2 -->
-    <div class="w3-card-4 w3-margin w3-white" style="border-radius:20px;">
-        <div class="w3-container">
-          <h3><b>Resource's Calculator (Province)</b></h3>
-        </div>  
-        <div class="w3-container">               
-          <div class="line">
-              <p>Morale (0-100): </p>
-              <input type="Number" id="o" value="70" min="0" max="100">
-          </div>
-   
-          <div class="line">
-            <p>Custom Multiplier: </p>
-            <input type="Number" id="p" value="1" min="0" max="10">
-            <div class="tooltip">[info]
-                <span class="tooltiptext">
-                <p>Use when calcuoutput not match your city production
-				<br>Known example:
-                <br>0.75 (x3/4) for some province.
-                <br>1.33 (x4/3) for some province.
-                <br>0.67 (x2/3) for some province.
-                <br>0.5 (x1/2) for some province.</p>
-                </span>
+        <section class="scenario-bar" aria-labelledby="scenario-heading">
+            <div class="scenario-description">
+                <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15M15 6v15"/></svg></span>
+                <div><h2 id="scenario-heading">Choose your scenario</h2><p>Applies to both calculators below.</p></div>
             </div>
-          </div>
-
-        </div>
-          
-        <!-- Section-2 output table -->
-          <h5 style="line-height: 10px;">Resource's Production (unit/day)</h5>
-          <!-- table head -->
-          <div class="rsoutput_table" style="font-weight: bold; width: fit-content; height: fit-content;">
-            <div class="rsoutput_table_row">
-                <div class="rsoutput_table_cell">Industry</div>
-                <div class="rsoutput_table_cell"><img style="display: inline;" width="45" height="40" src="/assets/supply.png" alt="Supply"></div>
-                <div class="rsoutput_table_cell"><img style="display: inline;" width="45" height="40" src="/assets/component.png" alt="Component"></div>
-                <div class="rsoutput_table_cell"><img style="display: inline;" width="45" height="40" src="/assets/fuel.png" alt="Fuel"></div>
-                <div class="rsoutput_table_cell"><img style="display: inline;" width="45" height="40" src="/assets/electronic.png" alt="Electronic"></div>
-                <div class="rsoutput_table_cell"><img style="display: inline;" width="45" height="40" src="/assets/rare_material.png" alt="Rare Material"></div>
-                <div class="rsoutput_table_cell"><img style="display: inline;" width="45" height="40" src="/assets/money.png" alt="Money"></div>
-            <!-- Section-2 output table -->
+            <div class="scenario-controls">
+                <div class="scenario-field">
+                    <label class="visually-hidden" for="scenario-select">Scenario</label>
+                    <select id="scenario-select" class="scenario-select"></select>
+                </div>
+                <div class="input-mode-control">
+                    <span id="input-mode-label">Value input</span>
+                    <div class="input-mode-toggle" role="group" aria-labelledby="input-mode-label">
+                        <button type="button" data-input-mode="slider" aria-pressed="true">Slider</button>
+                        <button type="button" data-input-mode="typing" aria-pressed="false">Typing</button>
+                    </div>
+                </div>
             </div>
-            <div class="rsoutput_table_row">
-                <div class="rsoutput_table_cell">-</div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-supply-p-0"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-component-p-0"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-fuel-p-0"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-electronic-p-0"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-rare_material-p-0"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-money-p"></p></div>
+        </section>
+
+        <section class="calculator-card" aria-labelledby="city-heading">
+            <div class="card-heading">
+                <div><p class="eyebrow">01 / CITY</p><h2 id="city-heading">City production</h2><p>Fine-tune your city and its infrastructure.</p></div>
             </div>
-
-            <div class="rsoutput_table_row">
-                <div class="rsoutput_table_cell">Lv.1</div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-supply-p-1"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-component-p-1"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-fuel-p-1"></p></div>  
-                <div class="rsoutput_table_cell"><p id="rsoutput-electronic-p-1"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-rare_material-p-1"></p></div> 
-                <div class="rsoutput_table_cell">---</p></div> 
+            <div class="calculator-layout">
+                <div class="input-panel">
+                    <fieldset>
+                        <legend>City conditions</legend>
+                        <div class="field-grid">
+                            <div class="field"><label for="c">City status</label><select id="c"><option selected value="1">Homeland</option><option value="0.5">Annexed</option><option value="0.25">Occupied</option></select></div>
+                            <div class="field"><label for="b">Population <span>1&ndash;10</span></label><input type="range" id="b" data-value-input value="5" min="1" max="10" step="0.1"><span id="b-value" class="slider-value" aria-hidden="true">5</span></div>
+                            <div class="field"><label for="a">Morale <span>%</span></label><input type="range" id="a" data-value-input value="70" min="0" max="100"><span id="a-value" class="slider-value" aria-hidden="true">70%</span></div>
+                            <div class="field"><label for="g">Custom multiplier <span>&times;</span></label><input type="number" id="g" value="1" min="0" max="10" step="0.01" aria-describedby="city-multiplier-help"></div>
+                        </div>
+                        <details class="field-help"><summary>When should I use a custom multiplier?</summary><p id="city-multiplier-help">Use this when a city has a special production modifier. Common values are 0.75 or 1.33 for playable cities, and 0.67 or 0.50 for unplayable cities. Leave it at 1 otherwise.</p></details>
+                    </fieldset>
+                    <fieldset class="building-fields">
+                        <legend>Infrastructure</legend>
+                        <div class="building-grid">
+                            <div class="field building-field"><img src="assets/arms_industries.png" width="68" height="68" alt=""><label for="d">Arms industry</label><input type="range" id="d" data-value-input value="0" min="0" max="5" step="0.1"><span id="d-value" class="slider-value" aria-hidden="true">0</span><span class="field-hint">Level 0&ndash;5</span></div>
+                            <div class="field building-field"><img src="assets/air_base.png" width="68" height="68" alt=""><label for="e">Air base</label><input type="range" id="e" data-value-input value="0" min="0" max="5" step="0.1"><span id="e-value" class="slider-value" aria-hidden="true">0</span><span class="field-hint">Level 0&ndash;5</span></div>
+                            <div class="field building-field"><img src="assets/naval_base.png" width="68" height="68" alt=""><label for="f">Naval base</label><input type="range" id="f" data-value-input value="1" min="1" max="5" step="0.1" aria-describedby="naval-help"><span id="f-value" class="slider-value" aria-hidden="true">1</span><span class="field-hint">Level 1&ndash;5</span></div>
+                        </div>
+                        <p id="naval-help" class="field-note">No naval base? Keep its level at 1.</p>
+                    </fieldset>
+                </div>
+                <div class="results-panel" role="region" aria-labelledby="city-results-heading">
+                    <div class="results-heading"><h3 id="city-results-heading">Daily production</h3><span>units / day</span></div>
+                    <div class="resource-grid">
+                        <div class="resource-tile">
+                            <img src="assets/supply.png" width="40" height="40" alt="">
+                            <span class="resource-label">Supplies</span>
+                            <output id="rsoutput-supply">&mdash;</output>
+                        </div>
+                        <div class="resource-tile">
+                            <img src="assets/component.png" width="40" height="40" alt="">
+                            <span class="resource-label">Components</span>
+                            <output id="rsoutput-component">&mdash;</output>
+                        </div>
+                        <div class="resource-tile">
+                            <img src="assets/fuel.png" width="40" height="40" alt="">
+                            <span class="resource-label">Fuel</span>
+                            <output id="rsoutput-fuel">&mdash;</output>
+                        </div>
+                        <div class="resource-tile">
+                            <img src="assets/electronic.png" width="40" height="40" alt="">
+                            <span class="resource-label">Electronics</span>
+                            <output id="rsoutput-electronic">&mdash;</output>
+                        </div>
+                        <div class="resource-tile">
+                            <img src="assets/rare_material.png" width="40" height="40" alt="">
+                            <span class="resource-label">Rare materials</span>
+                            <output id="rsoutput-rare_material">&mdash;</output>
+                        </div>
+                        <div class="resource-tile">
+                            <img src="assets/money.png" width="40" height="40" alt="">
+                            <span class="resource-label">Money</span>
+                            <output id="rsoutput-money">&mdash;</output>
+                        </div>
+                    </div>
+                    <p class="results-note">Results update as you change your inputs.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="rsoutput_table_row">
-                <div class="rsoutput_table_cell">Lv.2</div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-supply-p-2"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-component-p-2"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-fuel-p-2"></p></div>  
-                <div class="rsoutput_table_cell"><p id="rsoutput-electronic-p-2"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-rare_material-p-2"></p></div> 
-                <div class="rsoutput_table_cell">---</p></div> 
+        <section class="calculator-card" aria-labelledby="province-heading">
+            <div class="card-heading">
+                <div><p class="eyebrow">02 / PROVINCE</p><h2 id="province-heading">Province production</h2><p>Compare the impact of each local industry level.</p></div>
             </div>
-
-            <div class="rsoutput_table_row">
-                <div class="rsoutput_table_cell">Lv.3</div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-supply-p-3"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-component-p-3"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-fuel-p-3"></p></div>  
-                <div class="rsoutput_table_cell"><p id="rsoutput-electronic-p-3"></p></div>
-                <div class="rsoutput_table_cell"><p id="rsoutput-rare_material-p-3"></p></div> 
-                <div class="rsoutput_table_cell">---</p></div> 
+            <div class="calculator-layout province-layout">
+                <div class="input-panel">
+                    <fieldset>
+                        <legend>Province conditions</legend>
+                        <div class="field-grid province-fields">
+                            <div class="field"><label for="o">Morale <span>%</span></label><input type="range" id="o" data-value-input value="70" min="0" max="100"><span id="o-value" class="slider-value" aria-hidden="true">70%</span></div>
+                            <div class="field"><label for="p">Custom multiplier <span>&times;</span></label><input type="number" id="p" value="1" min="0" max="10" step="0.01" aria-describedby="province-multiplier-help"></div>
+                        </div>
+                        <details class="field-help"><summary>About production modifiers</summary><p id="province-multiplier-help">Some provinces use a modifier of 0.75, 1.33, 0.67, or 0.50. Use the value that matches your province, or leave it at 1.</p></details>
+                    </fieldset>
+                    <div class="money-summary"><img src="assets/money.png" width="36" height="36" alt=""><div><span>Daily money</span><output id="rsoutput-money-p">&mdash;</output></div><span class="field-hint">units / day</span></div>
+                    <p class="field-note">Local industry affects resources; money stays the same across levels.</p>
+                </div>
+                <div class="results-panel province-results" role="region" aria-labelledby="province-results-heading">
+                    <div class="results-heading"><h3 id="province-results-heading">Industry comparison</h3><span>units / day</span></div>
+                    <div class="table-scroll" tabindex="0" role="region" aria-label="Daily province production by local industry level">
+                        <table class="production-table">
+                            <caption class="visually-hidden">Daily resource production for local industry levels 0 through 3</caption>
+                            <thead><tr>
+                                <th scope="col">Local industry</th>
+                                <th scope="col"><img src="assets/supply.png" width="30" height="30" alt=""><span>Supplies</span></th>
+                                <th scope="col"><img src="assets/component.png" width="30" height="30" alt=""><span>Components</span></th>
+                                <th scope="col"><img src="assets/fuel.png" width="30" height="30" alt=""><span>Fuel</span></th>
+                                <th scope="col"><img src="assets/electronic.png" width="30" height="30" alt=""><span>Electronics</span></th>
+                                <th scope="col"><img src="assets/rare_material.png" width="30" height="30" alt=""><span>Rare materials</span></th>
+                            </tr></thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">No industry</th>
+                                <td><output id="rsoutput-supply-p-0">&mdash;</output></td>
+                                <td><output id="rsoutput-component-p-0">&mdash;</output></td>
+                                <td><output id="rsoutput-fuel-p-0">&mdash;</output></td>
+                                <td><output id="rsoutput-electronic-p-0">&mdash;</output></td>
+                                <td><output id="rsoutput-rare_material-p-0">&mdash;</output></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Level 1</th>
+                                <td><output id="rsoutput-supply-p-1">&mdash;</output></td>
+                                <td><output id="rsoutput-component-p-1">&mdash;</output></td>
+                                <td><output id="rsoutput-fuel-p-1">&mdash;</output></td>
+                                <td><output id="rsoutput-electronic-p-1">&mdash;</output></td>
+                                <td><output id="rsoutput-rare_material-p-1">&mdash;</output></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Level 2</th>
+                                <td><output id="rsoutput-supply-p-2">&mdash;</output></td>
+                                <td><output id="rsoutput-component-p-2">&mdash;</output></td>
+                                <td><output id="rsoutput-fuel-p-2">&mdash;</output></td>
+                                <td><output id="rsoutput-electronic-p-2">&mdash;</output></td>
+                                <td><output id="rsoutput-rare_material-p-2">&mdash;</output></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Level 3</th>
+                                <td><output id="rsoutput-supply-p-3">&mdash;</output></td>
+                                <td><output id="rsoutput-component-p-3">&mdash;</output></td>
+                                <td><output id="rsoutput-fuel-p-3">&mdash;</output></td>
+                                <td><output id="rsoutput-electronic-p-3">&mdash;</output></td>
+                                <td><output id="rsoutput-rare_material-p-3">&mdash;</output></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="results-note">Compare levels to plan your next upgrade.</p>
+                </div>
             </div>
+        </section>
 
-          </div>
-        </div>
-      </div>
-
-    </body>
+        <footer class="page-footer"><p>Built for Conflict of Nations players. Production estimates may vary in-game.</p><p>Found an issue? Contact <strong>playbabeTheBookShelf</strong> on the official Supremacy Discord.</p></footer>
+    </main>
+</body>
 </html>

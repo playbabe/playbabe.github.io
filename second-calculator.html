@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calculate how incoming damage is distributed across a stack of units using damage weight and quantity.">
+    <title>CoNCal &mdash; Damage Distribution Calculator</title>
+    <script src="theme.js"></script>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="damage-calculator.css">
+    <script defer src="data/units.js"></script>
+    <script defer src="damage-calculator.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJK7X0M3KH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag("js", new Date());
+        gtag("config", "G-EJK7X0M3KH");
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#second-calculator">Skip to calculator</a>
+    <header class="universal-header">
+        <div class="header-inner page-width">
+            <a class="brand" href="index.html" aria-label="CoNCal home">
+                <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M8 7h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2"/></svg></span>
+                <span>CoNCal<span class="brand-subtitle">Conflict of Nations tools</span></span>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+                <span>Dark mode</span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="calculator-nav" aria-label="Calculators">
+        <div class="nav-inner page-width">
+            <a class="calculator-nav-link" href="index.html">Resource calculator</a>
+            <a class="calculator-nav-link" href="second-calculator.html" aria-current="page">Damage distribution</a>
+        </div>
+    </nav>
+
+    <main id="second-calculator" class="page-width">
+        <section class="page-intro" aria-labelledby="page-title">
+            <div>
+                <h1 id="page-title">Supremacy WW3: Damage distribution</h1>
+                <p class="intro-description">Build a stack and see each unit type's share of incoming damage, based on its weight and quantity.</p>
+            </div>
+            <span class="version-badge">v0.1 <span aria-hidden="true">&middot;</span> Updated Oct 2026</span>
+        </section>
+
+        <section class="calculator-card stack-card" aria-labelledby="stack-heading">
+            <div class="card-heading">
+                <div><p class="eyebrow">01 / YOUR STACK</p><h2 id="stack-heading">Damage distribution</h2><p>Add units below, then adjust their quantities.</p><p>Calculation breakdown: weight &times; quantity &divide; total weight &times; 100 gives each type's damage share.</p></div>
+                <button id="clear-stack" class="secondary-button" type="button" disabled>Clear all units</button>
+            </div>
+            <div id="stack-warnings" class="stack-warnings" role="status" aria-live="polite" hidden></div>
+            <div id="stack-rows" class="stack-rows" tabindex="0" role="region" aria-label="Selected units and damage breakdown">
+                <div class="stack-empty">
+                    <div><h3>Your stack is empty</h3><p>Add a unit from the list below to get started.</p></div>
+                    <div><h3>No damage shares yet</h3><p>Each unit's calculation will appear here.</p></div>
+                </div>
+            </div>
+            <p id="stack-status" class="visually-hidden" role="status"></p>
+        </section>
+
+        <section class="calculator-card unit-picker" aria-labelledby="unit-picker-heading">
+            <div class="card-heading">
+                <div><p class="eyebrow">02 / ADD UNITS</p><h2 id="unit-picker-heading">Build your stack</h2><p>Choose a unit type, then add units to your stack.</p></div>
+            </div>
+            <div class="unit-categories" role="group" aria-label="Unit categories">
+                <button type="button" data-unit-category="ground" aria-pressed="true" aria-controls="unit-catalog">Ground</button>
+                <button type="button" data-unit-category="air" aria-pressed="false" aria-controls="unit-catalog">Air</button>
+                <button type="button" data-unit-category="naval" aria-pressed="false" aria-controls="unit-catalog">Naval</button>
+            </div>
+            <div id="unit-catalog" class="unit-catalog" role="region" aria-label="Ground units"></div>
+        </section>
+        <noscript><p class="intro-description">Enable JavaScript to add units and calculate their damage shares.</p></noscript>
+    </main>
+</body>
+</html>

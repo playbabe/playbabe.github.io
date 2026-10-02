@@ -1,7 +1,8 @@
-var scenarioData = null;
+var scenarioData = window.scenarioData || null;
 var currentScenario = null;
 
 document.addEventListener("DOMContentLoaded", function() {
+    setupValueInputs();
     loadScenarioData();
 
     document.getElementById("a").addEventListener("input", ResCalCity);
@@ -22,21 +23,50 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-function loadScenarioData() {
-    fetch("data/scenarios.json")
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            scenarioData = data;
-            currentScenario = data.defaultScenario;
-            populateScenarioSelect();
+function setupValueInputs() {
+    var valueInputs = document.querySelectorAll("input[data-value-input]");
+    var modeButtons = document.querySelectorAll("button[data-input-mode]");
+
+    function updateValueDisplay(input) {
+        var display = document.getElementById(input.id + "-value");
+        display.textContent = input.value + (input.id === "a" || input.id === "o" ? "%" : "");
+        display.hidden = input.type !== "range";
+    }
+
+    valueInputs.forEach(function(input) {
+        updateValueDisplay(input);
+        input.addEventListener("input", function() {
+            updateValueDisplay(input);
+        });
+    });
+
+    modeButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            var mode = button.getAttribute("data-input-mode");
+            valueInputs.forEach(function(input) {
+                input.type = mode === "slider" ? "range" : "number";
+                updateValueDisplay(input);
+            });
+            modeButtons.forEach(function(modeButton) {
+                modeButton.setAttribute("aria-pressed", String(modeButton === button));
+            });
+            // Sliders constrain typed values to their supported limits.
             ResCalCity();
             ResCalProvince();
-        })
-        .catch(function(error) {
-            console.error("Failed to load scenario data:", error);
         });
+    });
+}
+
+function loadScenarioData() {
+    if (!scenarioData) {
+        console.error("Scenario data is missing. Load data/scenarios.js before script.js.");
+        return;
+    }
+
+    currentScenario = scenarioData.defaultScenario;
+    populateScenarioSelect();
+    ResCalCity();
+    ResCalProvince();
 }
 
 function populateScenarioSelect() {
