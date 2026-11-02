@@ -1,0 +1,158 @@
+{
+  "doctrine_compare": {
+    "title": "DOCTRINE COMPARISON",
+    "subtitle": "Individual characteristics of doctrine specific units, updated Mid-Season 21",
+    "rows": [
+      {
+        "unit": "Motorized Infantry",
+        "us": ["highlight","slow_research", { "hard_dmg": "+10%" }],
+        "eu": [{ "hp": "+15%" }],
+        "ru": ["fast_research", { "air_dmg_1": "+10%" }]
+      },
+      {
+        "unit": "Mechanized Infantry",
+        "us": ["highlight", { "hard_dmg": "+10%" }, "reduce_terrain_penalty"],
+        "eu": ["highlight", { "air_dmg_1": "+10%" }, { "hp": "+15%" }],
+        "ru": ["highlight", { "soft_dmg": "+10%" }, { "speed": "+0.1" }]
+      },
+      {
+        "unit": "Naval Infantry",
+        "us": ["highlight", { "hp": "+10%" }, { "speed": "+0.1" }],
+        "eu": ["fast_research"],
+        "ru": []
+      },
+      {
+        "unit": "Airborne Infantry",
+        "us": ["fast_research"],
+        "eu": [],
+        "ru": ["slow_research"]
+      },
+      {
+        "unit": "Special Forces",
+        "us": ["slow_research"],
+        "eu": [],
+        "ru": ["highlight","fast_research",{ "soft_dmg": "+10%" }]
+      },
+      {
+        "unit": "Combat Recon Vehicle",
+        "us": [{ "hp": "+15%" }],
+        "eu": [{ "soft_dmg": "+10%" }],
+        "ru": [{ "mob_cost": "-10%" }]
+      },
+      {
+        "unit": "Armored Fighting Vehicle",
+        "us": ["highlight","fast_research",{ "hard_dmg": "+15%"},{ "hp": "+10%"}],
+	    "eu": ["slow_research","detect_5",{"detect_4":"+15"},{"air_dmg_3":"+15%"}],
+	    "ru": [{"soft_dmg":"+10%"},{"mob_cost":"-10%"}]
+      },
+      {
+        "unit": "Main Battle Tank",
+        "us": ["slow_research",{ "soft_dmg": "+10%" }],
+        "eu": [{ "hp": "+10%" }],
+        "ru": ["fast_research",{ "hard_dmg": "+15%" },{ "speed": "+10%" }]
+      },
+      {
+        "unit": "Tank Destroyer",
+        "us": ["earlier_airlift",{"research_cost_time": "-10%"}],
+        "eu": ["highlight","fast_research",{"hard_dmg": "+15%"}],
+        "ru": [{ "soft_dmg": "+33%" }]
+      },
+      {
+        "unit": "Towed Artillery",
+        "us": [],
+        "eu": [],
+        "ru": ["fast_research",{ "soft_dmg": "+20%" }]
+      },
+      {
+        "unit": "Mobile Artillery",
+        "us": ["slow_research"],
+        "eu": ["highlight",{"hard_dmg":"+15%"},{"hp":"+10%"}],
+        "ru": []
+      },
+      {
+        "unit": "Mobile Anti-Aircraft Vehicle",
+        "us": [],
+        "eu": [{"air_dmg_2":"+20%"}],
+        "ru": []
+      },
+      {
+        "unit": "SAM",
+        "us": [{"detect_1":"+25%"}],
+        "eu": ["earlier_airlift",{"research_cost_time":"-10%"}],
+        "ru": ["highlight","fast_research",{"air_dmg_5":"+20%"}]
+      },
+      {
+        "unit": "TDS",
+        "us": ["fast_research"],
+        "eu": [],
+        "ru": ["slow_research"]
+      },
+      {
+        "unit": "Helicopter Gunship",
+        "us": [{"research_cost_time":"-20%"},{"detect_4":"+10"}],
+        "eu": ["highlight",{"soft_dmg":"+10%"},{"mob_time":"-15%"}],
+        "ru": []
+      },
+      {
+        "unit": "Attack Helicopter",
+        "us": ["highlight",{"hard_dmg":"+20%"},{"detect_1":"+15"}],
+        "eu": [{"soft_dmg":"+33%"},{"detect_4":"+8"}],
+        "ru": [{"naval_dmg_1":"+50%"},{"air_dmg_2":"+33%"}]
+      },
+      {
+        "unit": "Air Superiority Fighter",
+        "us": ["highlight","fast_research",{"air_dmg_3":"+10%"},{"mob_cost":"-10%"}],
+        "eu": [{"ground_dmg":"+25%"},{"hp":"+10%"}],
+        "ru": ["slow_research",{"speed":"+1"},{"air_range":"+150"}]
+      },
+      {
+        "unit": "Naval Air Superiority Fighter",
+        "us": [],
+        "eu": [],
+        "ru": []
+      },
+      {
+        "unit": "Strike Fighter",
+        "us": [],
+        "eu": ["highlight","fast_research",{"hp":"+20%"}],
+        "ru": []
+      },
+      {
+        "unit": "Naval Strike Fighter",
+        "us": [],
+        "eu": [],
+        "ru": []
+      },
+      {
+        "unit": "AWACS",
+        "us": [],
+        "eu": [],
+        "ru": ["slow_research"]
+      },
+      {
+        "unit": "Heavy Bomber",
+        "us": ["highlight",{"hp":"+10%"}],
+        "eu": [{"build_dmg_1":"+10%"}],
+        "ru": [{"ground_dmg":"+10%"}]
+      },
+      {
+        "unit": "Destroyer",
+        "us": ["highlight",{"naval_dmg_1":"+15%"},{"hp":"+10%"}],
+        "eu": [{"naval_dmg_2":"+10%"},{"ground_dmg":"+33%"}],
+        "ru": [{"air_dmg_4":"+33%"},{"mob_cost":"-10%"}]
+      },
+      {
+        "unit": "Cruiser",
+        "us": [{"naval_dmg_1":"+10%"},{"upkeep":"-25%"}],
+        "eu": [{"air_dmg_4":"+25%"},{"mob_cost":"-7.5%"}],
+        "ru": [{"ground_dmg":"+33%"},{"hp":"+10%"}]
+      },
+      {
+        "unit": "Attack Submarine",
+        "us": [{"detect_3":"+15%"},{"research_cost_time":"-10%"}],
+        "eu": [{"mob_cost":"-10%"},{"upkeep":"-50%"}],
+        "ru": ["highlight",{"naval_dmg_3":"+10%"},"reduce_terrain_penalty"]
+      }
+    ]
+  }
+}

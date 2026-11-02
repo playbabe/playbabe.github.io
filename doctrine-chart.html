@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Compare unit benefits across Western, European, and Eastern doctrines.">
+    <title>CoNCal &mdash; Doctrine Chart</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="doctrine-chart.css">
+    <script defer src="doctrine-chart.js"></script>
+    <script defer src="doctrine-chart-export.js"></script>
+</head>
+<body>
+    <div class="chart-actions">
+        <a class="chart-action back-to-main" href="index.html">Resource calculator</a>
+        <button id="render-png" class="chart-action render-png" type="button" disabled>Render to PNG</button>
+    </div>
+    <span id="export-status" class="sr-only" role="status"></span>
+    <main class="page-shell">
+        <p id="chart-status" role="status" style="color: white">Loading doctrine data...</p>
+        <svg class="design-viewport" aria-labelledby="chart-title" preserveAspectRatio="xMidYMin meet" role="img" viewBox="0 0 1700 3300" hidden>
+            <foreignObject height="3300" width="1700">
+                <div xmlns="http://www.w3.org/1999/xhtml" id="doctrine-chart" class="doctrine-page"></div>
+            </foreignObject>
+        </svg>
+    </main>
+    <noscript><p>Enable JavaScript to display the doctrine comparison chart.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,586 @@
+
+
+@font-face {
+  font-family: 'Barlow Semi Condensed:Regular';
+  src: url('https://static.figma.com/font/BarlowSemiCondensed-Regular_2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Barlow:Bold';
+  src: url('https://static.figma.com/font/Barlow-Bold_2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Barlow:Medium';
+  src: url('https://static.figma.com/font/Barlow-Medium_2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Barlow:SemiBold';
+  src: url('https://static.figma.com/font/Barlow-SemiBold_2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@layer base {
+  :root {
+    background: #092a3b;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+  }
+}
+
+.page-shell {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  overflow-x: hidden;
+  background: #092a3b;
+}
+
+.design-viewport {
+  display: block;
+  width: min(100%, 1700px);
+  height: auto;
+  align-self: flex-start;
+}
+
+.doctrine-page {
+  position: relative;
+  width: 1700px;
+  height: 3300px;
+  overflow: hidden;
+  color: white;
+  font-family: 'Barlow:Medium', Arial, sans-serif;
+}
+
+.background-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #092a3b;
+  pointer-events: none;
+}
+
+.background-layer img {
+  position: absolute;
+  top: 0;
+  left: -1525px;
+  width: 4750px;
+  height: 3300px;
+  max-width: none;
+}
+
+.chart-title {
+  position: absolute;
+  inset: 0;
+}
+
+.title-flag {
+  position: absolute;
+  top: 60px;
+  left: 216px;
+  width: 163px;
+  height: 151px;
+}
+
+.chart-title h1 {
+  position: absolute;
+  top: 50px;
+  left: 392px;
+  margin: 0;
+  font-family: 'Barlow:Bold', Arial, sans-serif;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.title-line {
+  position: absolute;
+  top: 162px;
+  left: 324px;
+  width: 1160px;
+  height: 6px;
+}
+
+.chart-title p {
+  position: absolute;
+  top: 171px;
+  left: 326px;
+  margin: 0;
+  color: #d9d9d9;
+  font-family: 'Barlow Semi Condensed:Regular', Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.table-header {
+  position: absolute;
+  inset: 0;
+}
+
+.header-panel {
+  position: absolute;
+  top: 265px;
+  width: 420px;
+  height: 220px;
+  border: 3px solid #85b1b7;
+  border-radius: 40px;
+  background: #1d313e;
+}
+
+.header-panel--unit {
+  top: 305px;
+  left: 20px;
+  width: 340px;
+  height: 180px;
+}
+
+.header-panel--us {
+  left: 380px;
+}
+
+.header-panel--eu {
+  left: 820px;
+}
+
+.header-panel--ru {
+  left: 1260px;
+}
+
+.unit-heading {
+  position: absolute;
+  top: 317px;
+  left: 139px;
+  font-family: 'Barlow:Bold', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.doctrine-heading {
+  position: absolute;
+  top: 262px;
+  width: 390px;
+  height: 123px;
+  font-family: 'Barlow:Bold', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.doctrine-heading img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 123px;
+  height: 123px;
+  max-width: none;
+}
+
+.doctrine-heading span {
+  position: absolute;
+  top: 47px;
+  white-space: nowrap;
+}
+
+.doctrine-heading--us {
+  left: 410px;
+}
+
+.doctrine-heading--us span {
+  left: 139px;
+}
+
+.doctrine-heading--eu {
+  left: 846px;
+}
+
+.doctrine-heading--eu span {
+  left: 134px;
+}
+
+.doctrine-heading--ru {
+  left: 1286px;
+}
+
+.doctrine-heading--ru span {
+  left: 148px;
+}
+
+.comparison-grid {
+  position: absolute;
+  top: 385px;
+  left: 20px;
+  display: grid;
+  width: 1660px;
+  grid-auto-rows: 80px;
+  grid-template-columns: 340px repeat(3, 420px);
+  column-gap: 20px;
+  row-gap: 0;
+}
+
+.table-cell {
+  position: relative;
+  min-width: 0;
+  /* Share the 3px border with the next row. */
+  margin-bottom: -3px;
+  border: 3px solid #85b1b7;
+  background: #304851;
+}
+
+.table-cell--alternate {
+  background: #1d313e;
+}
+
+.unit-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-family: 'Barlow:Medium', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+.doctrine-cell {
+  position: absolute;
+  inset: -3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doctrine-cell--highlighted::before {
+  position: absolute;
+  inset: 3px;
+  content: '';
+}
+
+.doctrine-cell--us::before {
+  background: linear-gradient(
+    90deg,
+    rgb(255 192 0 / 70%) 2%,
+    rgb(255 192 0 / 20%) 20%,
+    rgb(255 192 0 / 0%) 100%
+  );
+}
+
+.doctrine-cell--eu::before {
+  background: linear-gradient(
+    90deg,
+    rgb(25 124 191 / 70%) 2%,
+    rgb(25 124 191 / 20%) 20%,
+    rgb(25 124 191 / 0%) 100%
+  );
+}
+
+.doctrine-cell--ru::before {
+  background: linear-gradient(
+    90deg,
+    rgb(189 49 50 / 70%) 2%,
+    rgb(189 49 50 / 20%) 20%,
+    rgb(189 49 50 / 0%) 100%
+  );
+}
+
+.perk-list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.perk-badge {
+  position: relative;
+  height: 62.225px;
+  flex: 0 0 auto;
+  color: #213740;
+  font-family: 'Barlow:SemiBold', Arial, sans-serif;
+  font-weight: 600;
+}
+
+.perk-badge--standard {
+  width: 171px;
+}
+
+.perk-badge--compact {
+  width: 129px;
+}
+
+.perk-badge--wide {
+  width: 208px;
+}
+
+.perk-badge--air {
+  width: 212px;
+}
+
+.perk-copy {
+  position: absolute;
+  top: 0;
+  left: 31px;
+  display: grid;
+  width: 140px;
+  height: 62px;
+  grid-template-rows: 31px 31px;
+  text-align: center;
+}
+
+.perk-badge--compact .perk-copy {
+  width: 98px;
+}
+
+.perk-badge--wide .perk-copy {
+  width: 177px;
+}
+
+.perk-badge--air .perk-copy {
+  left: 72px;
+}
+
+.perk-copy span,
+.perk-copy strong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.perk-copy span {
+  background: #6a9191;
+}
+
+.perk-copy strong {
+  background: white;
+  font-size: 24px;
+}
+
+.perk-badge--compact .perk-copy span {
+  font-size: 26px;
+}
+
+.perk-badge--wide .perk-copy strong {
+  font-size: 20px;
+}
+
+.perk-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 62.225px;
+  height: 62.225px;
+}
+
+.perk-badge--air .perk-icon {
+  left: 0;
+}
+
+.perk-badge--air .perk-icon--secondary {
+  left: 41px;
+}
+
+.perk-diamond {
+  position: absolute;
+  inset: 0;
+  width: 62.225px;
+  height: 62.225px;
+}
+
+.perk-symbol {
+  position: absolute;
+  top: 10px;
+  left: 11px;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.perk-badge--compact .perk-symbol {
+  top: 14px;
+  left: 14px;
+  width: 34px;
+  height: 34px;
+}
+
+.perk-badge--wide .perk-symbol {
+  top: 13px;
+  left: 13px;
+  width: 35px;
+  height: 35px;
+}
+
+.perk-badge--air .perk-symbol {
+  top: 10px;
+  left: 14px;
+  width: 40px;
+  height: 43px;
+}
+
+.perk-badge--air .perk-icon--secondary .perk-symbol {
+  top: 11px;
+  left: 11px;
+  width: 40px;
+  height: 40px;
+}
+
+.research-marker--cell {
+  position: relative;
+  width: 57px;
+  height: 62px;
+  flex: 0 0 auto;
+}
+
+.research-marker--cell img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 62px;
+}
+
+.research-marker--legend {
+  position: absolute;
+  width: 110px;
+  height: 120px;
+}
+
+.research-marker--legend > img {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  width: 79.11px;
+  height: 101.151px;
+}
+
+.fast-marker {
+  position: absolute;
+  top: 0;
+  left: 47px;
+  width: 47.27px;
+  height: 67.989px;
+  transform: rotate(15deg);
+}
+
+.fast-marker img {
+  width: 47.27px;
+  height: 67.989px;
+}
+
+.slow-marker {
+  position: absolute;
+  top: 0;
+  left: 46px;
+  width: 58.416px;
+  height: 59px;
+}
+
+.slow-marker img {
+  width: 58.416px;
+  height: 59px;
+}
+
+.legend {
+  position: absolute;
+  left: 48px;
+  width: 332px;
+  height: 265px;
+}
+
+.legend-item {
+  position: absolute;
+  left: 0;
+  width: 332px;
+  height: 120px;
+}
+
+.legend-item--fast {
+  top: 0;
+}
+
+.legend-item--slow {
+  top: 145px;
+}
+
+.legend-item p {
+  position: absolute;
+  top: 27px;
+  left: 124px;
+  width: 208px;
+  margin: 0;
+  font-family: 'Barlow:Medium', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.perk-template {
+  display: block;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  max-height: 63px;
+}
+
+*, ::before, ::after { box-sizing: border-box; }
+body { margin: 0; }
+img, svg { display: block; vertical-align: middle; }
+img { max-width: 100%; height: auto; }
+.contents { display: contents; }[hidden] { display: none !important; }
+
+.chart-actions {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+.chart-action {
+  display: block;
+  padding: 10px 16px;
+  border: 1px solid #85b1b7;
+  border-radius: 8px;
+  background: #1d313e;
+  color: white;
+  font: 600 14px Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.back-to-main { background: #315971; border-color: #a6c3d5; }
+.render-png:disabled { opacity: 0.6; cursor: wait; }
+.chart-action:focus-visible { outline: 3px solid white; outline-offset: 3px; }

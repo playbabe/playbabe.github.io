@@ -1,0 +1,110 @@
+{
+    "air_dmg_1":  {
+                      "valueX":  62,
+                      "width":  171
+                  },
+    "air_dmg_2":  {
+                      "valueX":  62,
+                      "width":  171
+                  },
+    "air_dmg_3":  {
+                      "valueX":  103,
+                      "width":  212
+                  },
+    "air_dmg_4":  {
+                      "valueX":  144,
+                      "width":  253
+                  },
+    "air_dmg_5":  {
+                      "valueX":  103,
+                      "width":  212
+                  },
+    "air_range":  {
+                      "valueX":  62,
+                      "width":  171
+                  },
+    "build_dmg_1":  {
+                        "valueX":  62,
+                        "width":  181
+                    },
+    "detect_1":  {
+                     "valueX":  62,
+                     "width":  171
+                 },
+    "detect_2":  {
+                     "valueX":  62,
+                     "width":  171
+                 },
+    "detect_3":  {
+                     "valueX":  62,
+                     "width":  186
+                 },
+    "detect_4":  {
+                     "valueX":  62,
+                     "width":  171
+                 },
+    "detect_5":  {
+                     "valueX":  62,
+                     "width":  171
+                 },
+    "earlier_airlift":  {
+                            "valueX":  62,
+                            "width":  171
+                        },
+    "ground_dmg":  {
+                       "valueX":  103,
+                       "width":  212
+                   },
+    "hard_dmg":  {
+                     "valueX":  62,
+                     "width":  171
+                 },
+    "hp":  {
+               "valueX":  62,
+               "width":  129
+           },
+    "mob_cost":  {
+                     "valueX":  62,
+                     "width":  171
+                 },
+    "mob_time":  {
+                     "valueX":  62,
+                     "width":  171
+                 },
+    "naval_dmg_1":  {
+                        "valueX":  62,
+                        "width":  171
+                    },
+    "naval_dmg_2":  {
+                        "valueX":  62,
+                        "width":  171
+                    },
+    "naval_dmg_3":  {
+                        "valueX":  103,
+                        "width":  212
+                    },
+    "reduce_terrain_penalty":  {
+                                   "valueX":  62,
+                                   "width":  208
+                               },
+    "research_cost":  {
+                          "valueX":  62,
+                          "width":  171
+                      },
+    "research_cost_time":  {
+                               "valueX":  62,
+                               "width":  226
+                           },
+    "soft_dmg":  {
+                     "valueX":  62,
+                     "width":  171
+                 },
+    "speed":  {
+                  "valueX":  62,
+                  "width":  171
+              },
+    "upkeep":  {
+                   "valueX":  62,
+                   "width":  171
+               }
+}
