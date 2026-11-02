@@ -11,8 +11,8 @@
       },
       {
         "unit": "Mechanized Infantry",
-        "us": ["highlight", { "hard_dmg": "+10%" }, "reduce_terrain_penalty"],
-        "eu": ["highlight", { "air_dmg_3": "+10%" }, { "hp": "+15%" }],
+        "us": [{ "hard_dmg": "+10%" }, "reduce_terrain_penalty"],
+        "eu": [{ "air_dmg_3": "+10%" }, { "hp": "+15%" }],
         "ru": ["highlight", { "soft_dmg": "+25%" }, { "speed": "+0.1" }]
       },
       {
