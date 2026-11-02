@@ -7,13 +7,13 @@
         "unit": "Motorized Infantry",
         "us": ["highlight","slow_research", { "hard_dmg": "+10%" }],
         "eu": [{ "hp": "+15%" }],
-        "ru": ["fast_research", { "air_dmg_1": "+10%" }]
+        "ru": ["fast_research", { "air_dmg_3": "+25%" }]
       },
       {
         "unit": "Mechanized Infantry",
         "us": ["highlight", { "hard_dmg": "+10%" }, "reduce_terrain_penalty"],
-        "eu": ["highlight", { "air_dmg_1": "+10%" }, { "hp": "+15%" }],
-        "ru": ["highlight", { "soft_dmg": "+10%" }, { "speed": "+0.1" }]
+        "eu": ["highlight", { "air_dmg_3": "+10%" }, { "hp": "+15%" }],
+        "ru": ["highlight", { "soft_dmg": "+25%" }, { "speed": "+0.1" }]
       },
       {
         "unit": "Naval Infantry",
@@ -131,7 +131,7 @@
       },
       {
         "unit": "Heavy Bomber",
-        "us": ["highlight",{"hp":"+10%"}],
+        "us": ["highlight",{"hp":"+10%"},{"speed":"+1/Tier"}],
         "eu": [{"build_dmg_1":"+10%"}],
         "ru": [{"ground_dmg":"+10%"}]
       },
