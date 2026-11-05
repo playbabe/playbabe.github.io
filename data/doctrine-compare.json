@@ -41,7 +41,7 @@
       },
       {
         "unit": "Armored Fighting Vehicle",
-        "us": ["highlight","fast_research",{ "hard_dmg": "+15%"},{ "hp": "+10%"}],
+        "us": ["fast_research",{ "hard_dmg": "+15%"},{ "hp": "+10%"}],
 	    "eu": ["slow_research","detect_5",{"detect_4":"+15"},{"air_dmg_3":"+15%"}],
 	    "ru": [{"soft_dmg":"+10%"},{"mob_cost":"-10%"}]
       },
